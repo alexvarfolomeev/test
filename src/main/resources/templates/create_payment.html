@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Create payment</title>
+</head>
+<body>
+<form th:object="${request}" th:align="center" th:action="@{/api/v1/payment/create-payment}" action="#" th:method="post" enctype="multipart/form-data">
+    <fieldset>
+        <div class="mb-3" style="size: 200px; margin: auto;padding-top: 300px;padding-left: 400px;padding-right: 400px">
+            <label class="form-label">Input your amount</label>
+            <input class="form-control" placeholder="Input your amount" type="text" th:field="*{amount}">
+        </div>
+        <div class="mb-3" style="size: 200px; margin: auto;padding-left: 400px;padding-right: 400px">
+            <label for="paymentType">Payment Type</label>
+            <select class="form-control" id="paymentType" th:field="*{paymentType}">
+                <option th:value="DEPOSIT">DEPOSIT</option>
+            </select>
+        </div>
+        <div class="mb-3" style="size: 200px; margin: auto;padding-left: 400px;padding-right: 400px">
+            <label for="currnecyType">Currency</label>
+            <select class="form-control" id="currnecyType" th:field="*{currency}">
+                <option th:value="EUR">EUR</option>
+                <option th:value="USD">USD</option>
+                <option th:value="RUB">RUB</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Create payment</button>
+    </fieldset>
+</form>
+</body>
+</html>
